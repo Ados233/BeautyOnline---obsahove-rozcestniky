@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regenerace Morphosis — Framesi | BeautyOnline.cz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#E2486A;
+    --pink-dark:#C93857;
+    --pink-pale:#FBE7EC;
+    --green:#6EA84B;
+    --green-dark:#5B9040;
+    --ink:#242220;
+    --muted:#726C64;
+    --line:#EAE4DA;
+    --cream:#F8ECE1;
+    --black:#1B1B1B;
+    --paper:#FFFFFF;
+    --bg:#FBF9F6;
+
+    --scalp:#8FB2D1;
+    --densifying:#B79DD6;
+    --reinforcing:#8FA0DB;
+    --repair:#E0B24A;
+    --colorprotect:#E5688C;
+    --restructure:#8FAE83;
+    --ultimate:#CB8E9B;
+    --sublimis:#B79A76;
+    --curlsoul:#57A8CE;
+    --purifying:#E28C5C;
+    --balance:#8CB65E;
+    --loveext:#8FB6AC;
+    --sun:#EB9B4E;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Open Sans',sans-serif;font-weight:400;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.headline{font-family:'Ubuntu',sans-serif;font-weight:700;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- mockup notice ---------- */
+  .notice{
+    background:var(--green);color:#fff;font-size:12.5px;text-align:center;
+    padding:8px 16px;font-weight:600;
+  }
+
+  /* ---------- header ---------- */
+  .header{background:#fff;border-bottom:1px solid var(--line);}
+  .header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0;}
+  .logo{display:flex;align-items:center;gap:9px;}
+  .logo-badge{
+    width:32px;height:32px;border-radius:50%;background:var(--pink);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700;font-family:'Ubuntu',sans-serif;
+  }
+  .logo-word{font-family:'Ubuntu',sans-serif;font-weight:700;font-size:19px;color:var(--ink);}
+  .search{
+    flex:1;max-width:420px;display:flex;align-items:center;
+    border:1px solid var(--line);border-radius:999px;padding:9px 18px;color:var(--muted);font-size:13.5px;
+    background:#FAFAF9;
+  }
+  .header-icons{display:flex;align-items:center;gap:18px;font-size:13px;color:var(--muted);}
+  .cart-pill{
+    display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;
+    border-radius:999px;padding:8px 16px;font-weight:600;font-size:13px;
+  }
+
+  /* ---------- black nav ---------- */
+  .nav{background:var(--black);color:#EDEAE5;}
+  .nav-row{display:flex;align-items:center;gap:26px;font-size:13.5px;font-weight:600;padding:13px 0;}
+  .nav-row span.on{color:var(--pink);}
+  .crumbs{padding:16px 0 0;font-size:12.5px;color:var(--muted);}
+  .crumbs a{border-bottom:1px solid transparent;}
+  .crumbs a:hover{border-color:var(--muted);}
+
+  /* ---------- page intro ---------- */
+  .intro{padding:18px 0 8px;}
+  .intro h1{font-size:30px;margin:0 0 10px;}
+  .intro p{max-width:640px;color:var(--muted);font-size:14.5px;margin:0;}
+  .intro p a{color:var(--pink);font-weight:600;}
+  .intro h3{color:var(--ink);}
+  .intro-list{margin:0 0 4px;padding:0 0 0 18px;max-width:620px;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:4px;}
+
+  /* ---------- decision helper ---------- */
+  .decision{
+    background:var(--cream);border-radius:20px;padding:24px 26px;margin:26px 0 8px;
+  }
+  .decision p{margin:0 0 13px;font-size:14px;font-weight:600;color:var(--ink);}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;align-items:center;}
+  .chip{
+    appearance:none;border:1.5px solid #E4D7C7;background:#fff;color:var(--ink);
+    padding:9px 17px;border-radius:999px;font-family:'Open Sans',sans-serif;
+    font-size:13px;font-weight:600;cursor:pointer;transition:.15s ease;
+  }
+  .chip:hover{border-color:var(--pink);}
+  .chip.active{background:var(--pink);border-color:var(--pink);color:#fff;}
+  .chip-reset{background:none;border:none;color:var(--pink-dark);text-decoration:underline;font-size:12.5px;font-weight:600;cursor:pointer;display:none;}
+  .chip-reset.show{display:inline-block;}
+
+  /* ---------- section ---------- */
+  section.group{padding:52px 0 6px;}
+  .group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px;flex-wrap:wrap;}
+  .group-head h2{font-size:24px;margin:0 0 4px;}
+  .group-head p{margin:0;color:var(--muted);font-size:13.5px;max-width:480px;}
+  .group-count{
+    font-size:12px;font-weight:700;color:var(--green-dark);background:#EAF3E3;
+    border-radius:999px;padding:5px 13px;white-space:nowrap;
+  }
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:16px;}
+
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;
+    padding:0;overflow:hidden;display:flex;flex-direction:column;
+    transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .card:hover{box-shadow:0 10px 24px rgba(0,0,0,.07);transform:translateY(-2px);}
+  .swatch{height:14px;background:var(--line-color,#ccc);position:relative;}
+  .swatch .tag{
+    position:absolute;top:12px;left:12px;background:rgba(255,255,255,.88);color:var(--ink);
+    font-size:11px;font-weight:700;padding:4px 11px;border-radius:999px;
+  }
+  .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:11px;flex:1;}
+  .card-name{font-size:19px;margin:0;color:var(--ink);}
+  .card-for{font-size:13.5px;font-weight:600;color:var(--ink);margin:0;}
+  .card-benefits{margin:0;padding:0;list-style:none;font-size:12.8px;color:var(--muted);display:flex;flex-direction:column;gap:4px;}
+  .card-benefits li{padding-left:15px;position:relative;}
+  .card-benefits li::before{
+    content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--line-color,#999);
+  }
+  .card-meta{font-size:11.8px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;}
+  .card-meta b{color:var(--ink);font-weight:700;}
+  .card-cta{
+    margin-top:auto;display:inline-block;text-align:center;
+    background:var(--ink);color:#fff;font-weight:700;font-size:13px;
+    padding:11px 18px;border-radius:999px;transition:background .15s ease;
+  }
+  .card-cta:hover{background:var(--pink);}
+
+  .card-name .sub{display:block;font-size:12.5px;font-weight:600;color:var(--muted);font-family:'Open Sans',sans-serif;margin-top:2px;}
+
+  /* ---------- advisor block (matches homepage pattern) ---------- */
+  .advisor{
+    margin:64px 0 50px;background:#F2E1D8;border-radius:22px;padding:32px 30px;
+    display:flex;gap:26px;align-items:center;flex-wrap:wrap;
+  }
+  .advisor-avatar{
+    width:66px;height:66px;border-radius:50%;
+    flex-shrink:0;overflow:hidden;background:#fff;
+  }
+  .advisor-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+  .advisor-text{flex:1;min-width:220px;}
+  .advisor-text h3{font-size:18px;margin:0 0 5px;}
+  .advisor-text p{margin:0;font-size:13.5px;color:var(--muted);}
+  .advisor .btn{
+    background:transparent;border:1.5px solid var(--ink);color:var(--ink);font-weight:700;font-size:13.5px;
+    padding:11px 22px;border-radius:999px;white-space:nowrap;transition:background .15s ease,color .15s ease;
+  }
+  .advisor .btn:hover{background:var(--ink);color:#fff;}
+
+  /* ---------- facts (vegan tags + numbers) ---------- */
+  .facts{margin:60px 0 0;padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .facts-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px;}
+  .facts-tags span{
+    background:#E7F3DE;color:#4C7A34;font-weight:700;font-size:12.5px;
+    padding:8px 16px;border-radius:999px;
+  }
+  .facts h3{font-size:16px;margin:0 0 16px;}
+  .facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px 24px;}
+  .facts-grid div{font-size:12.8px;color:var(--muted);}
+  .facts-grid strong{display:block;font-family:'Ubuntu',sans-serif;font-size:28px;color:var(--ink);font-weight:700;line-height:1;margin-bottom:4px;}
+
+  /* ---------- catalog cta ---------- */
+  .catalog-cta{
+    margin:0 0 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;
+    flex-wrap:wrap;padding:26px 0;
+  }
+  .catalog-cta h3{font-size:17px;margin:0 0 4px;}
+  .catalog-cta p{margin:0;font-size:13.5px;color:var(--muted);}
+  .btn-dark{
+    background:var(--ink);color:#fff;border:1.5px solid var(--ink);font-weight:700;font-size:13.5px;
+    padding:12px 26px;border-radius:999px;white-space:nowrap;transition:background .15s ease;
+  }
+  .btn-dark:hover{background:var(--pink);border-color:var(--pink);}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:44px 0 12px;}
+  .faq-head{max-width:720px;margin-bottom:22px;}
+  .faq-head h2{font-size:24px;margin:0 0 6px;}
+  .faq-head p{margin:0;color:var(--muted);font-size:13.5px;}
+  .faq-list{display:grid;gap:10px;}
+  .faq-item{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .faq-item:hover,.faq-item[open]{border-color:#D9CEC0;box-shadow:0 7px 18px rgba(0,0,0,.045);}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:17px 54px 17px 20px;position:relative;
+    font-family:'Ubuntu',sans-serif;font-weight:700;font-size:15px;color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);
+    width:25px;height:25px;border-radius:50%;background:var(--pink-pale);color:var(--pink-dark);
+    display:flex;align-items:center;justify-content:center;font-family:'Open Sans',sans-serif;
+    font-size:19px;font-weight:600;line-height:1;
+  }
+  .faq-item[open] summary::after{content:"−";}
+  .faq-answer{padding:0 54px 18px 20px;color:var(--muted);font-size:13.5px;}
+  .faq-answer p{margin:0;}
+  .faq-answer a{color:var(--pink-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+  .faq-note{margin:16px 0 0;color:var(--muted);font-size:12px;}
+
+  /* ---------- distribution strip ---------- */
+  .distribution{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 24px;
+    margin:0 0 60px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .distribution .mark{
+    width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;
+    flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Ubuntu',sans-serif;
+  }
+  .distribution p{margin:0;font-size:13px;color:var(--muted);}
+  .distribution p b{color:var(--ink);}
+  .distribution p a{color:var(--pink-dark);font-weight:700;}
+
+  footer{background:var(--black);color:#B9B4AC;padding:30px 0;font-size:12px;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:720px){
+    .header-row{flex-wrap:wrap;}
+    .search{order:3;max-width:100%;}
+    .nav-row{overflow-x:auto;white-space:nowrap;}
+    .advisor{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap" style="padding-top:28px;">
+
+  <p class="crumbs"><a href="https://www.beautyonline.cz/">Domů</a> / <a href="https://www.beautyonline.cz/znacky/framesi/">Framesi</a> / Regenerace Morphosis</p>
+
+  <div class="intro">
+    <h1>Regenerace Morphosis</h1>
+    <p>Framesi Morphosis je profesionální vlasová kosmetika určená pro celkovou péči o vlasy i vlasovou pokožku. Řada nabízí 13 samostatných rituálů, každý pro jinou potřebu — vyberte podle toho, co aktuálně řešíte.</p>
+
+    <p style="margin-top:16px;">Věříme v přirozenou krásu, osobitost a vědecky podloženou péči, která respektuje rovnováhu vlasů, pokožky i planety. Morphosis spojuje výkon, smyslový zážitek a odpovědnost.</p>
+    <p style="margin-top:12px;">Každé vlasy mají svůj vlastní příběh, proto vytváříme osobní rituály – péči vybranou na míru konkrétním potřebám vlasů a vlasové pokožky. Personál v salonech Framesi vám doporučí ideální kombinaci produktů a nabídne profesionální salonní ošetření Morphosis, čímž nastartujete proměnu svých vlasů.</p>
+
+    <h3 style="font-size:15px;margin:22px 0 8px;">Věda a příroda jako partneři</h3>
+    <p style="margin:0 0 6px;">Technologicky pokročilé receptury Morphosis:</p>
+    <ul class="intro-list">
+      <li>až 98 % surovin přírodního původu</li>
+      <li>důraz na středomořské ingredience</li>
+      <li>technologie zachovávající biologickou kvalitu aktivních látek</li>
+      <li>vysoká účinnost a viditelný kosmetický efekt</li>
+    </ul>
+
+    <h3 style="font-size:15px;margin:22px 0 8px;">Udržitelnost</h3>
+    <p style="margin:0 0 6px;">Respekt k životnímu prostředí je součástí každého kroku:</p>
+    <ul class="intro-list">
+      <li>až 50% podíl recyklovaných plastů (PCR) v obalech</li>
+      <li>certifikace FSC u papírových obalů</li>
+      <li>šetrné výrobní procesy</li>
+      <li>úspora energie a vody při výrobě</li>
+    </ul>
+  </div>
+
+  <div class="decision">
+    <p>Co aktuálně řešíte? Vyberte a níže se vám zvýrazní odpovídající řady.</p>
+    <div class="chips" id="chips">
+      <button class="chip" data-tag="citliva">Citlivá pokožka</button>
+      <button class="chip" data-tag="padani">Padání a řídnutí</button>
+      <button class="chip" data-tag="mastna">Mastná pokožka</button>
+      <button class="chip" data-tag="lupy">Lupy</button>
+      <button class="chip" data-tag="poskozene">Poškozené vlasy</button>
+      <button class="chip" data-tag="suche">Suché a dehydratované</button>
+      <button class="chip" data-tag="barvene">Barvené vlasy</button>
+      <button class="chip" data-tag="kudrnate">Vlnité a kudrnaté</button>
+      <button class="chip" data-tag="prodlouzene">Prodloužené vlasy</button>
+      <button class="chip" data-tag="slunce">Léto a slunce</button>
+      <button class="chip-reset" id="chipReset">zrušit výběr</button>
+    </div>
+  </div>
+
+  <section class="group" id="skin">
+    <div class="group-head">
+      <div><h2>Zaměřeno na vlasovou pokožku</h2><p>Základ rituálu — vyberte podle stavu pokožky, ne podle typu vlasu.</p></div>
+      <div class="group-count">5 řad</div>
+    </div>
+    <div class="grid">
+
+      <article class="card" data-tags="citliva">
+        <div class="swatch" style="--line-color:var(--scalp);background:var(--scalp)"></div>
+        <div class="card-body">
+          <p class="card-name">Scalp</p>
+          <p class="card-for">Komplexní péče o rovnováhu vlasové pokožky</p>
+          <ul class="card-benefits" style="--line-color:var(--scalp)"><li>Zklidňuje podráždění citlivé pokožky</li><li>Podporuje zdravé prostředí pro růst vlasů</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> bio arnika, zeolit, vitamin B12<br><b>Vůně:</b> máta peprná · čajové lístky · citron</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-scalp-control/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="padani citliva">
+        <div class="swatch" style="background:var(--densifying)"></div>
+        <div class="card-body">
+          <p class="card-name">Densifying</p>
+          <p class="card-for">Ztenčené vlasy se sklonem k padání + citlivá pokožka</p>
+          <ul class="card-benefits" style="--line-color:var(--densifying)"><li>Podporuje přirozený růst vlasů</li><li>Posiluje vlasové kořínky</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> Tri-C-Peptidy™, jablečné kmenové buňky, vitamin B6<br><b>Vůně:</b> citrusy · květiny · čaj · dřevo</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/regenerace-morphosis/linie-densifying/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="padani mastna">
+        <div class="swatch" style="background:var(--reinforcing)"></div>
+        <div class="card-body">
+          <p class="card-name">Reinforcing</p>
+          <p class="card-for">Lámavé vlasy se sklonem k padání + mastná pokožka</p>
+          <ul class="card-benefits" style="--line-color:var(--reinforcing)"><li>Podporuje přirozený růst vlasů</li><li>Posiluje oslabená vlákna</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> kmenové buňky z červené révy, arginin, zinek PCA<br><b>Vůně:</b> aromatické citrusy · dřeviny · oceán</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/regenerace-morphosis/linie-reinforcing/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="mastna">
+        <div class="swatch" style="background:var(--balance)"></div>
+        <div class="card-body">
+          <p class="card-name">Balance</p>
+          <p class="card-for">Mastná vlasová pokožka</p>
+          <ul class="card-benefits" style="--line-color:var(--balance)"><li>Osvěžuje a dodává lehkost</li><li>Obnovuje rovnováhu pokožky</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> citronový extrakt, mátový olej, zinek PCA<br><b>Vůně:</b> máta peprná · citron · tea tree</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-balance/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="lupy">
+        <div class="swatch" style="background:var(--purifying)"></div>
+        <div class="card-body">
+          <p class="card-name">Purifying</p>
+          <p class="card-for">Vlasová pokožka se sklonem k lupům</p>
+          <ul class="card-benefits" style="--line-color:var(--purifying)"><li>Normalizuje a obnovuje zdraví pokožky</li><li>Čistí a uvolňuje póry</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> biotechnologický výtažek z Chinotta, olej tea tree<br><b>Vůně:</b> citrusy · zelený čaj · květiny</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-purifying/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="group" id="hair">
+    <div class="group-head">
+      <div><h2>Zaměřeno na vlasy</h2><p>Sedm řad podle stavu a historie vlasu.</p></div>
+      <div class="group-count">7 řad</div>
+    </div>
+    <div class="grid">
+
+      <article class="card" data-tags="poskozene">
+        <div class="swatch" style="background:var(--restructure)"></div>
+        <div class="card-body">
+          <p class="card-name">Restructure</p>
+          <p class="card-for">Silně poškozené vlasy</p>
+          <ul class="card-benefits" style="--line-color:var(--restructure)"><li>Vyplňuje a posiluje</li><li>Regeneruje vnitřní strukturu</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> rostlinné peptidy, fermentovaný rýžový extrakt, fytokolagen<br><b>Vůně:</b> chypre · ovoce · dřevo</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-restructure/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="poskozene suche">
+        <div class="swatch" style="background:var(--ultimate)"></div>
+        <div class="card-body">
+          <p class="card-name">Ultimate Care</p>
+          <p class="card-for">Krepaté a mdlé vlasy</p>
+          <ul class="card-benefits" style="--line-color:var(--ultimate)"><li>Obnovuje vitalitu a lesk</li><li>Vyhlazuje povrch</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> fermentovaný extrakt z pivoňky, komplex Hyalorice<br><b>Vůně:</b> květiny · citrusy · balsamico</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/ultimate-care/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="poskozene">
+        <div class="swatch" style="background:var(--repair)"></div>
+        <div class="card-body">
+          <p class="card-name">Repair</p>
+          <p class="card-for">Oslabené, matné vlasy bez života</p>
+          <ul class="card-benefits" style="--line-color:var(--repair)"><li>Obnovuje narušené vazby</li><li>Vyživuje a chrání</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> olej z kamélie, mikrofytokeratin, ceramidy<br><b>Vůně:</b> jasmín · bergamot · vanilka</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-repair/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="suche">
+        <div class="swatch" style="background:var(--sublimis)"></div>
+        <div class="card-body">
+          <p class="card-name">Sublimis Oil</p>
+          <p class="card-for">Suché a dehydratované vlasy</p>
+          <ul class="card-benefits" style="--line-color:var(--sublimis)"><li>Intenzivně hydratuje</li><li>Dodává lesk</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> mučenkový, arganový a baobabový olej, vitamin E<br><b>Vůně:</b> bílé květy · citron · ovocný krém</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-sublime/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="barvene">
+        <div class="swatch" style="background:var(--colorprotect)"></div>
+        <div class="card-body">
+          <p class="card-name">Color Protect</p>
+          <p class="card-for">Barvené vlasy</p>
+          <ul class="card-benefits" style="--line-color:var(--colorprotect)"><li>Zvýrazňuje lesk a sytost barvy</li><li>Chrání barvu před blednutím</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> výtažek z malin, olivový výtažek<br><b>Vůně:</b> mandarinka · brambořík · cedr</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-color-protect/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="kudrnate">
+        <div class="swatch" style="background:var(--curlsoul)"></div>
+        <div class="card-body">
+          <p class="card-name">Curl Soul</p>
+          <p class="card-for">Vlnité a kudrnaté vlasy</p>
+          <ul class="card-benefits" style="--line-color:var(--curlsoul)"><li>Zvýrazňuje tvar kudrlin</li><li>Hydratuje a vyživuje</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> bavlníkové mléko, kyselina hyaluronová, arganový olej<br><b>Vůně:</b> kokos · bavlníkové mléko · vanilka</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/curl-soul/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+      <article class="card" data-tags="prodlouzene">
+        <div class="swatch" style="background:var(--loveext)"></div>
+        <div class="card-body">
+          <p class="card-name">Love Extension</p>
+          <p class="card-for">Prodloužené vlasy</p>
+          <ul class="card-benefits" style="--line-color:var(--loveext)"><li>Usnadňuje rozčesávání a chrání spoje</li><li>Dodává přirozený objem</li></ul>
+          <div class="card-meta"><b>Klíčové látky:</b> hyperfermentovaný proskurník, sójové proteiny<br><b>Vůně:</b> citrusy · vanilka · kašmírové dřevo</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/linie-love-extension/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="group" id="sun">
+    <div class="group-head">
+      <div><h2>Sezónní a speciální péče</h2><p>Ochrana během léta, u moře, bazénu i na slunci.</p></div>
+      <div class="group-count">1 řada</div>
+    </div>
+    <div class="grid">
+
+      <article class="card sun" data-tags="slunce suche">
+        <div class="swatch" style="background:var(--sun)"></div>
+        <div class="card-body">
+          <p class="card-name">Sun<span class="sub">Limitovaná letní řada</span></p>
+          <p class="card-for">Ochrana vlasů před sluncem, mořskou vodou a chlorem</p>
+          <ul class="card-benefits" style="--line-color:var(--sun)">
+            <li>Chrání před UV zářením, slanou vodou a chlorem</li>
+            <li>Hydratuje, omezuje krepatění a dodává lesk</li>
+          </ul>
+          <div class="card-meta"><b>Klíčové látky:</b> výtažek z mořské řasy Nori, fermentovaná aloe vera, vitamin E · 98 % přírodních složek, 100 % veganské</div>
+          <a class="card-cta" href="https://www.beautyonline.cz/znacky/framesi/morphosis-sun-ritual/">Zobrazit produkty</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="facts-tags">
+      <span>100% veganské složení</span>
+      <span>0 % lepku</span>
+      <span>0 % SLES &amp; SLS</span>
+      <span>0 % parabenů</span>
+      <span>0 % umělých barviv</span>
+    </div>
+    <h3>Morphosis v číslech</h3>
+    <div class="facts-grid">
+      <div><strong>73</strong>aktivních složek</div>
+      <div><strong>12</strong>rostlinných povrchově aktivních látek</div>
+      <div><strong>22</strong>rostlinných kondicionérů</div>
+      <div><strong>13</strong>přírodních olejů</div>
+      <div><strong>8</strong>proteinů a aminokyselin</div>
+      <div><strong>7</strong>vitaminů</div>
+      <div><strong>21</strong>multifunkčních extraktů</div>
+    </div>
+  </div>
+
+  <div class="catalog-cta">
+    <div>
+      <h3>Chcete řadu Morphosis prozkoumat více do hloubky?</h3>
+      <p>Prohlédněte si kompletní katalog domácí péče Framesi Morphosis Home.</p>
+    </div>
+    <a class="btn btn-dark" href="#">Prohlédnout</a>
+  </div>
+
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="faq-head">
+      <h2 id="faq-title">Nejčastěji kladené otázky</h2>
+      <p>Rychlé odpovědi, které vám pomohou vybrat správnou péči Framesi Morphosis podle potřeb vlasů a vlasové pokožky.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Který šampon Framesi je vhodný na mastné vlasy?</summary>
+        <div class="faq-answer"><p>Pro mastící se vlasovou pokožku zvolte <a href="https://www.beautyonline.cz/znacky/framesi/morphosis-balance/">Morphosis Balance Shampoo</a>. Pomáhá pokožku šetrně čistit, osvěžovat a obnovovat její rovnováhu, aniž by zbytečně zatěžoval délky. Šampon nanášejte hlavně ke kořínkům; suché konečky můžete ošetřit kondicionérem z jiné řady.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jaký kondicionér Framesi zvolit na barvené vlasy?</summary>
+        <div class="faq-answer"><p>Na barvené vlasy je určen <a href="https://www.beautyonline.cz/znacky/framesi/morphosis-color-protect/">Morphosis Color Protect Conditioner</a>. Pomáhá hydratovat vlasové vlákno, chránit intenzitu barvy a podpořit lesk. Nanášejte jej do délek a konečků po umytí, ideálně společně se šamponem Color Protect.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jakou péči zvolit pro citlivou nebo podrážděnou vlasovou pokožku?</summary>
+        <div class="faq-answer"><p>Pro citlivou pokožku, pocity nepohodlí nebo svědění je vhodná řada <a href="https://www.beautyonline.cz/znacky/framesi/morphosis-scalp-control/">Morphosis Scalp</a>. Je zaměřená na zklidnění a podporu přirozené rovnováhy pokožky. Pokud jsou obtíže výrazné, dlouhodobé nebo se zhoršují, doporučujeme poradit se s dermatologem.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Co používat na lupy a svědění vlasové pokožky?</summary>
+        <div class="faq-answer"><p>Při výskytu lupů sáhněte po řadě <a href="https://www.beautyonline.cz/znacky/framesi/morphosis-purifying/">Morphosis Purifying</a>. Purifying Shampoo pokožku čistí a pomáhá omezovat viditelné šupinky; péči lze doplnit bezoplachovým Purifying Spray. Jestliže svědění nebo šupinatění přetrvává, může mít jinou příčinu a je vhodná konzultace s odborníkem.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jakou péči Framesi zvolit při vypadávání vlasů?</summary>
+        <div class="faq-answer"><p>Výběr závisí také na stavu pokožky. Pro ztenčené vlasy se sklonem k padání a citlivější pokožku volte <a href="https://www.beautyonline.cz/znacky/framesi/regenerace-morphosis/linie-densifying/">Morphosis Densifying</a>. Pro lámavé, oslabené vlasy a mastnější pokožku se lépe hodí <a href="https://www.beautyonline.cz/znacky/framesi/regenerace-morphosis/linie-reinforcing/">Morphosis Reinforcing</a>. Kosmetická péče může podpořit kondici pokožky a odolnost vlasů, ale neřeší zdravotní příčiny náhlého nebo výrazného padání; v takovém případě navštivte dermatologa.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jaký je rozdíl mezi Morphosis Densifying a Reinforcing?</summary>
+        <div class="faq-answer"><p><strong>Densifying</strong> je vhodná především pro jemné, ztenčené vlasy se sklonem k padání a citlivější pokožku. <strong>Reinforcing</strong> volte u oslabených a lámavých vlasů se sklonem k padání, zejména pokud se pokožka více mastí. Rozhodujte se tedy nejen podle vlasů, ale také podle stavu pokožky.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Která řada Framesi je vhodná pro suché vlasy?</summary>
+        <div class="faq-answer"><p>Pro suché a dehydratované vlasy doporučujeme <a href="https://www.beautyonline.cz/znacky/framesi/morphosis-sublime/">Morphosis Sublimis Oil</a>, která vlasům dodává výživu, hebkost a lesk. Pokud jsou vlasy současně krepaté, mdlé a obtížně upravitelné, vhodnou alternativou je <a href="https://www.beautyonline.cz/znacky/framesi/ultimate-care/">Morphosis Ultimate Care</a>.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jakou řadu použít na silně poškozené nebo odbarvené vlasy?</summary>
+        <div class="faq-answer"><p>Pro vlasy výrazně poškozené odbarvováním, chemickými zásahy nebo častým tepelným stylingem zvolte <a href="https://www.beautyonline.cz/znacky/framesi/morphosis-restructure/">Morphosis Restructure</a>. Je zaměřená na posílení a regeneraci vnitřní struktury vlasu. U oslabených, matných vlasů bez života, které nepotřebují tak intenzivní rekonstrukci, může lépe vyhovovat <a href="https://www.beautyonline.cz/znacky/framesi/morphosis-repair/">Morphosis Repair</a>.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Která péče je vhodná pro vlnité a kudrnaté vlasy?</summary>
+        <div class="faq-answer"><p>Pro přirozeně vlnité a kudrnaté vlasy je určena řada <a href="https://www.beautyonline.cz/znacky/framesi/curl-soul/">Morphosis Curl Soul</a>. Pomáhá kudrliny hydratovat, vyživovat a zvýraznit jejich tvar. Pro nejlepší výsledek kombinujte mycí péči s vhodným bezoplachovým nebo stylingovým přípravkem pro definici vln.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Mohu kombinovat šampon a kondicionér z různých řad Morphosis?</summary>
+        <div class="faq-answer"><p>Ano. Šampon vybírejte hlavně podle potřeb vlasové pokožky a kondicionér nebo masku podle stavu délek. Při mastné pokožce a suchých koncích tak můžete použít například Balance Shampoo ke kořínkům a Sublimis Oil Conditioner do délek. Produkty nanášejte pouze tam, kde mají působit.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jak často používat masku nebo intenzivní kúru Morphosis?</summary>
+        <div class="faq-answer"><p>Masku obvykle stačí použít jednou až dvakrát týdně podle míry poškození a typu vlasů. Jemným vlasům může vyhovovat menší množství a kratší působení, velmi suché nebo poškozené vlasy mohou potřebovat intenzivnější péči. Vždy se řiďte návodem konkrétního produktu.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Jak správně sestavit kompletní péči Framesi Morphosis?</summary>
+        <div class="faq-answer"><p>Nejprve určete potřeby pokožky a podle nich vyberte šampon. Potom zhodnoťte délky vlasů a doplňte kondicionér nebo masku. Nakonec můžete přidat cílené sérum, sprej či bezoplachovou péči. Pokud řešíte více potřeb současně, řady Morphosis lze kombinovat.</p></div>
+      </details>
+    </div>
+    <p class="faq-note">Doporučení slouží k výběru kosmetické péče a nenahrazuje odborné zdravotní vyšetření.</p>
+  </section>
+
+  <div class="advisor">
+    <div class="advisor-avatar"><img src="https://data.italystyle.cz/104823/www/beauty.italystyle.cz/kontakty/Seknickova-Katka.png" alt="Kateřina Sekničková"></div>
+    <div class="advisor-text">
+      <h3>Stále si nevíte rady? Poradíme Vám</h3>
+      <p>Kateřina Sekničková, naše poradkyně pro e-shop, vám podle popisu nebo fotky doporučí, kterou řadu Morphosis zvolit — a jestli je vhodné kombinovat víc řad najednou.</p>
+    </div>
+    <a class="btn" href="https://www.beautyonline.cz/beautyonline/poradci/odbornice-vlasy/kontaktni-formular/">Mám dotaz</a>
+  </div>
+
+  <div class="distribution">
+    <div class="mark">IT</div>
+    <p><b>BeautyOnline.cz je oficiálním distributorem Framesi pro ČR</b> — produkty pochází přímo od výrobce, s plnou zárukou a odborným poradenstvím. K litrovým balením šamponů a kondicionérů odesíláme i pumpičky pro snadnější nanášení produktu. Provozuje ITALY STYLE LINEA, s.r.o.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Návrh stránky · BeautyOnline.cz × Framesi Morphosis</span>
+    <span>Zdroje dat: katalog Morphosis (2606), beautyonline.cz — září 2026</span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Který šampon Framesi je vhodný na mastné vlasy?","acceptedAnswer":{"@type":"Answer","text":"Pro mastící se vlasovou pokožku zvolte Morphosis Balance Shampoo. Pomáhá pokožku šetrně čistit, osvěžovat a obnovovat její rovnováhu, aniž by zbytečně zatěžoval délky."}},
+    {"@type":"Question","name":"Jaký kondicionér Framesi zvolit na barvené vlasy?","acceptedAnswer":{"@type":"Answer","text":"Na barvené vlasy je určen Morphosis Color Protect Conditioner. Pomáhá hydratovat vlasové vlákno, chránit intenzitu barvy a podpořit lesk."}},
+    {"@type":"Question","name":"Jakou péči zvolit pro citlivou nebo podrážděnou vlasovou pokožku?","acceptedAnswer":{"@type":"Answer","text":"Pro citlivou pokožku, pocity nepohodlí nebo svědění je vhodná řada Morphosis Scalp. Je zaměřená na zklidnění a podporu přirozené rovnováhy pokožky."}},
+    {"@type":"Question","name":"Co používat na lupy a svědění vlasové pokožky?","acceptedAnswer":{"@type":"Answer","text":"Při výskytu lupů sáhněte po řadě Morphosis Purifying. Purifying Shampoo pokožku čistí a pomáhá omezovat viditelné šupinky; péči lze doplnit bezoplachovým Purifying Spray."}},
+    {"@type":"Question","name":"Jakou péči Framesi zvolit při vypadávání vlasů?","acceptedAnswer":{"@type":"Answer","text":"Pro ztenčené vlasy se sklonem k padání a citlivější pokožku volte Morphosis Densifying. Pro lámavé, oslabené vlasy a mastnější pokožku se lépe hodí Morphosis Reinforcing. Při náhlém nebo výrazném padání navštivte dermatologa."}},
+    {"@type":"Question","name":"Jaký je rozdíl mezi Morphosis Densifying a Reinforcing?","acceptedAnswer":{"@type":"Answer","text":"Densifying je vhodná pro jemné, ztenčené vlasy se sklonem k padání a citlivější pokožku. Reinforcing volte u oslabených a lámavých vlasů se sklonem k padání, zejména pokud se pokožka více mastí."}},
+    {"@type":"Question","name":"Která řada Framesi je vhodná pro suché vlasy?","acceptedAnswer":{"@type":"Answer","text":"Pro suché a dehydratované vlasy doporučujeme Morphosis Sublimis Oil. Pokud jsou vlasy současně krepaté, mdlé a obtížně upravitelné, vhodnou alternativou je Morphosis Ultimate Care."}},
+    {"@type":"Question","name":"Jakou řadu použít na silně poškozené nebo odbarvené vlasy?","acceptedAnswer":{"@type":"Answer","text":"Pro vlasy výrazně poškozené odbarvováním, chemickými zásahy nebo častým tepelným stylingem zvolte Morphosis Restructure. U oslabených, matných vlasů bez života může lépe vyhovovat Morphosis Repair."}},
+    {"@type":"Question","name":"Která péče je vhodná pro vlnité a kudrnaté vlasy?","acceptedAnswer":{"@type":"Answer","text":"Pro přirozeně vlnité a kudrnaté vlasy je určena řada Morphosis Curl Soul. Pomáhá kudrliny hydratovat, vyživovat a zvýraznit jejich tvar."}},
+    {"@type":"Question","name":"Mohu kombinovat šampon a kondicionér z různých řad Morphosis?","acceptedAnswer":{"@type":"Answer","text":"Ano. Šampon vybírejte hlavně podle potřeb vlasové pokožky a kondicionér nebo masku podle stavu délek. Produkty nanášejte pouze tam, kde mají působit."}},
+    {"@type":"Question","name":"Jak často používat masku nebo intenzivní kúru Morphosis?","acceptedAnswer":{"@type":"Answer","text":"Masku obvykle stačí použít jednou až dvakrát týdně podle míry poškození a typu vlasů. Vždy se řiďte návodem konkrétního produktu."}},
+    {"@type":"Question","name":"Jak správně sestavit kompletní péči Framesi Morphosis?","acceptedAnswer":{"@type":"Answer","text":"Nejprve určete potřeby pokožky a podle nich vyberte šampon. Potom zhodnoťte délky vlasů a doplňte kondicionér nebo masku. Nakonec můžete přidat cílené sérum, sprej či bezoplachovou péči."}}
+  ]
+}
+</script>
+
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const reset = document.getElementById('chipReset');
+  const cards = document.querySelectorAll('.card');
+
+  function applyFilter(tag){
+    cards.forEach(c => {
+      const tags = c.getAttribute('data-tags') || '';
+      if (!tag) { c.style.opacity=1; c.style.filter='none'; return; }
+      const match = tags.split(' ').includes(tag);
+      c.style.opacity = match ? 1 : .3;
+      c.style.filter = match ? 'none' : 'grayscale(55%)';
+    });
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const isActive = chip.classList.contains('active');
+      chips.forEach(c => c.classList.remove('active'));
+      if (isActive){ applyFilter(null); reset.classList.remove('show'); }
+      else {
+        chip.classList.add('active');
+        applyFilter(chip.getAttribute('data-tag'));
+        reset.classList.add('show');
+        document.getElementById('skin').scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  reset.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    applyFilter(null);
+    reset.classList.remove('show');
+  });
+</script>
+
+</body>
+</html>
